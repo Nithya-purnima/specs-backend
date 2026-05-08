@@ -7,57 +7,73 @@ const Order = sequelize.define('Order', {
         primaryKey: true,
         autoIncrement: true
     },
+
     customerId: {
         type: DataTypes.INTEGER,
         allowNull: false,
         references: {
-            model: 'Customers',
+            model: 'customers',
             key: 'id'
         }
     },
+
     productId: {
         type: DataTypes.INTEGER,
         allowNull: false,
         references: {
-            model: 'Products',
+            model: 'products',
             key: 'id'
         }
     },
+
     sellerId: {
         type: DataTypes.INTEGER,
         allowNull: false,
         references: {
-            model: 'Sellers',
+            model: 'sellers',
             key: 'id'
         }
     },
+
     quantity: {
         type: DataTypes.INTEGER,
         allowNull: false,
         defaultValue: 1
     },
+
     totalPrice: {
         type: DataTypes.DECIMAL(10, 2),
         allowNull: false
     },
+
     deliveryAddress: {
         type: DataTypes.TEXT,
         allowNull: false
     },
+
     phone: {
         type: DataTypes.STRING(15),
         allowNull: false
     },
+
     status: {
-        type: DataTypes.ENUM('pending', 'confirmed', 'shipped', 'delivered', 'cancelled'),
+        type: DataTypes.ENUM(
+            'pending',
+            'confirmed',
+            'shipped',
+            'delivered',
+            'cancelled'
+        ),
         defaultValue: 'pending'
     },
+
     orderDate: {
         type: DataTypes.DATE,
         defaultValue: DataTypes.NOW
     }
+
 }, {
-    tableName: 'Orders',
+    tableName: 'orders',
     timestamps: true
 });
 
