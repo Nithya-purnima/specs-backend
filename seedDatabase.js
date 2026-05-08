@@ -123,10 +123,10 @@ const seedProducts = async () => {
         console.log(`✅ Successfully seeded ${createdProducts.length} products!`);
         console.log('Database seeding completed.');
         
-        process.exit(0);
+        sequelize.close();
     } catch (error) {
         console.error('❌ Error seeding database:', error);
-        process.exit(1);
+        sequelize.close();
     }
 };
 
