@@ -17,8 +17,7 @@ app.use(cors({
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// Serve static files
-app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+// Note: Images now served from Cloudinary (no local /uploads endpoint needed)
 
 // Import routes
 const authRoutes = require('./routes/auth');
